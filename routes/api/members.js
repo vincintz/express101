@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
     // validations
     if (!req.params.id)
         return res.status(400)
-                  .json({ msg: `Member with id = ${req.params.id} not found.` });
+                  .json({ msg: "Member id required" });
     else if (!req.body.name)
         return res.status(400)
                   .json({ msg: "Please provide a member name" });
@@ -60,7 +60,7 @@ router.patch('/:id', (req, res) => {
     // validations
     if (!req.params.id)
         return res.status(400)
-                  .json({ msg: `Member with id = ${req.params.id} not found.` });
+                  .json({ msg: "Member id required" });
     const member = members.find(m => m.id === parseInt(req.params.id));
     if (!member) {
         res.status(404)
@@ -71,6 +71,22 @@ router.patch('/:id', (req, res) => {
         member.age = req.body.age ? req.body.age : member.age;
         res.json( { msg: "Update successful", member: member } );
     }
+});
+
+// Delete a member
+router.delete('/:id', (req, res) => {
+    // validations
+    if (!req.params.id)
+        return res.status(400)
+                  .json({ msg: "Member id required" });
+    const member = members.find(m => m.id === parseInt(req.params.id));
+    if (!member)
+        return res.status(404)
+                  .json( { msg: `Member with id = ${req.params.id} not found.` } );
+    const index = members.indexOf(member);
+    console.log(index, member);
+    members.splice(index, 1);
+    return res.json({ msg: "Member deleted", member: member, all: members });
 });
 
 module.exports = router;

@@ -36,3 +36,9 @@ content-type: application/json
     "name": "Poopy",
     "age": 21
 }
+
+###
+
+DELETE http://localhost:5000/api/members/3
+
+
