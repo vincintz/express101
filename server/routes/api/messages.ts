@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import moment from 'moment';
-import mongodb from 'mongodb';
+import mongodb, { ObjectID } from 'mongodb';
+
 const router  = express.Router();
 
 // Get all messages
@@ -32,7 +33,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
         return res.status(400)
                   .json({ msg: "Message id required" });
     const messages = await loadMessagesCollection();
-    const result = await messages.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
+    const result = await messages.deleteOne({ _id: new ObjectID(req.params.id) });
     
     if (result?.deletedCount ?? 0 > 0)
         return res.json({ msg: `Message '${req.params.id}' deleted` });
@@ -49,8 +50,6 @@ const muri  = `mongodb+srv://${muser}:${mpass}@express101-5p11r.mongodb.net/test
 const mcoll = 'messages';
 
 async function loadMessagesCollection() {
-    console.log(muri);
-    console.log(mcoll);
     const client = await mongodb.MongoClient.connect(muri, {
         useNewUrlParser: true
     });
