@@ -4,3 +4,15 @@ GET http://localhost:5000/api/members
 
 GET http://localhost:5000/api/members/1
 
+###
+
+GET http://localhost:5000/api/members/3
+
+###
+
+POST http://localhost:5000/api/members
+content-type: application/json
+
+{
+    "name": "Java",
+}
