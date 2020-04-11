@@ -14,5 +14,25 @@ POST http://localhost:5000/api/members
 content-type: application/json
 
 {
-    "name": "Java",
+    "name": "Pluto",
+    "age": 21
+}
+
+###
+
+PUT http://localhost:5000/api/members/3
+content-type: application/json
+
+{
+    "name": "Poopy"
+}
+
+###
+
+PATCH http://localhost:5000/api/members/3
+content-type: application/json
+
+{
+    "name": "Poopy",
+    "age": 21
 }

@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 // Setup middlewares
-// app.use(require('./middleware/logger'));
+app.use(require('./middleware/logger'));
 app.use(express.json());
 app.use(express.urlencoded( {extended: false} ));
 
