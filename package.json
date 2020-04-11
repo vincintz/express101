@@ -17,8 +17,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index",
-    "dev": "nodemon server/index",
+    "start": "node dist/app.js",
+    "dev": "nodemon server/app.ts",
     "build": "tsc -p ."
   },
   "author": "",
