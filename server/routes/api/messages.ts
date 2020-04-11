@@ -1,16 +1,16 @@
-const express = require('express');
-const moment  = require('moment');
-const mongodb = require('mongodb');
+import express, { Request, Response } from 'express';
+import moment from 'moment';
+import mongodb from 'mongodb';
 const router  = express.Router();
 
 // Get all messages
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
     const messages = await loadMessagesCollection();
     res.send(await messages.find({}).toArray());
 });
 
 // Add message
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
     if (!req.body.message)
         return res.status(400)
                   .json( { msg: "You need to provide a message" } );
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 
 
 // Delete message
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     // validations
     if (!req.params.id)
         return res.status(400)
@@ -34,7 +34,7 @@ router.delete('/:id', async (req, res) => {
     const messages = await loadMessagesCollection();
     const result = await messages.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
     
-    if (result.deletedCount > 0)
+    if (result?.deletedCount ?? 0 > 0)
         return res.json({ msg: `Message '${req.params.id}' deleted` });
     else
         return res.status(400)
@@ -58,4 +58,4 @@ async function loadMessagesCollection() {
 }
 
 
-module.exports = router;
+export default router;

@@ -2,8 +2,9 @@
   "name": "express101",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.ts",
   "dependencies": {
+    "@types/mongodb": "^3.5.5",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "mongodb": "^3.5.5"

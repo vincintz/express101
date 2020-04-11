@@ -1,13 +1,14 @@
-const express = require('express');
+import express, { Request, Response } from 'express';
+import Member, { members } from '../../model/Members';
+
 const router = express.Router();
-const members = require('../../Members');
 
 // Get all members
-router.get('/', (req, res) => res.json(members));
+router.get('/', (req: Request, res: Response) => res.json(members));
 
 // Get one member by id
-router.get('/:id', (req, res) => {
-    const member = members.filter(m => m.id === parseInt(req.params.id));
+router.get('/:id', (req: Request, res: Response) => {
+    const member = members.filter((m: Member) => m.id === parseInt(req.params.id));
     if (member.length == 0) {
         return res.status(404)
                   .json( { msg: `Member (id: ${req.params.id}) not found`} );
@@ -18,12 +19,12 @@ router.get('/:id', (req, res) => {
 });
 
 // Create a new member
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response) => {
     if (!req.body.name)
         return res.status(400)
                   .json( { msg: "You need to provide a name" } );
     const member = {
-        id: Math.max(0, ...members.map(m => m.id)) + 1,
+        id: Math.max(0, ...members.map((m: Member) => m.id)) + 1,
         name: req.body.name,
         age: req.body.age,
     };
@@ -32,7 +33,7 @@ router.post('/', (req, res) => {
 });
 
 // Update a member
-router.put('/:id', (req, res) => {
+router.put('/:id', (req: Request, res: Response) => {
     // validations
     if (!req.params.id)
         return res.status(400)
@@ -40,7 +41,7 @@ router.put('/:id', (req, res) => {
     else if (!req.body.name)
         return res.status(400)
                   .json({ msg: "Please provide a member name" });
-    const member = members.find(m => m.id === parseInt(req.params.id));
+    const member = members.find((m: Member) => m.id === parseInt(req.params.id));
     if (!member) {
         return res.status(404)
                   .json( { msg: `Member with id = ${req.params.id} not found.` } );
@@ -53,12 +54,12 @@ router.put('/:id', (req, res) => {
 });
 
 // Update a member
-router.patch('/:id', (req, res) => {
+router.patch('/:id', (req: Request, res: Response) => {
     // validations
     if (!req.params.id)
         return res.status(400)
                   .json({ msg: "Member id required" });
-    const member = members.find(m => m.id === parseInt(req.params.id));
+    const member = members.find((m: Member) => m.id === parseInt(req.params.id));
     if (!member) {
         return res.status(404)
                   .json( { msg: `Member with id = ${req.params.id} not found.` } );
@@ -71,12 +72,12 @@ router.patch('/:id', (req, res) => {
 });
 
 // Delete a member
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req: Request, res: Response) => {
     // validations
     if (!req.params.id)
         return res.status(400)
                   .json({ msg: "Member id required" });
-    const member = members.find(m => m.id === parseInt(req.params.id));
+    const member = members.find((m: Member) => m.id === parseInt(req.params.id));
     if (!member)
         return res.status(404)
                   .json( { msg: `Member with id = ${req.params.id} not found.` } );
@@ -85,4 +86,4 @@ router.delete('/:id', (req, res) => {
     return res.json({ msg: "Member deleted", member });
 });
 
-module.exports = router;
+export default router;
