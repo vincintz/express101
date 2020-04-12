@@ -15,6 +15,7 @@ Features
 Next Step
 ---------
 * Transpile using Babel (?)
+* Bundle app using Webpack
 * Sampe single-page UI
   * Messages (vue)
   * Members (angular?)
