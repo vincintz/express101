@@ -12,19 +12,17 @@
 * No standard file system library
 * Too dynamic / not typesafe
 
+# NodeJS
+
+* JavaScript runtime environment that executes JavaScript code outside of a web browser
+* Node.js lets developers use JavaScript to write command line tools and for server-side scripting
+* **NPM** - Package manager for the JavaScript programming language
+
 # Typescript
 
 * TypeScript is an open-source programming language developed and maintained by Microsoft
 * It is a strict syntactical superset of JavaScript, and adds optional static typing to the language
 * Needs to be *transpiled* before it can run in the browser (or by NodeJS)
-
-# NodeJS
-
-* JavaScript runtime environment that executes JavaScript code outside of a web browser
-* Node.js lets developers use JavaScript to write command line tools and for server-side scripting
-
-# NPM
-Package manager for the JavaScript programming language
 
 # References
 
