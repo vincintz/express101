@@ -3,6 +3,7 @@ import path from 'path';
 import loggerMiddleware from './middleware/logger';
 import membersApi from './routes/api/members';
 import messageApi from './routes/api/messages';
+import userApi from './routes/api/users';
 
 const PORT = process.env.PORT || 5000;
 const app: Application = express();
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set API routes
 app.use('/api/members', membersApi);
 app.use('/api/messages', messageApi);
+app.use('/api/users', userApi);
 
 // Start listening to port
 app.listen(PORT, () => {
