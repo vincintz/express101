@@ -18,7 +18,12 @@
 * Node.js lets developers use JavaScript to write command line tools and for server-side scripting
 * **NPM** - Package manager for the JavaScript programming language
 
+# ExpressJS
+
+* Express.js is a web application framework for Node.js
+* It is designed for building web applications and APIs
 # Typescript
+
 
 * TypeScript is an open-source programming language developed and maintained by Microsoft
 * It is a strict syntactical superset of JavaScript, and adds optional static typing to the language
@@ -32,3 +37,4 @@
 * https://en.wikipedia.org/wiki/TypeScript
 * https://en.wikipedia.org/wiki/Node.js
 * https://nodejs.dev/a-brief-history-of-nodejs
+* https://nodejs.dev/differences-between-nodejs-and-the-browser
