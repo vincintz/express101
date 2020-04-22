@@ -45,13 +45,6 @@
       ```
       const express = require('express')
       const app = express();
-      // const PORT = 8081
-      /*
-        use the process.env object to store the value of port,
-        this way, you don't have to modify the port number if 
-        you're running on dev or production server; also, this is
-        considered good practice
-      */
       const port = process.env.PORT || 8081;
       app.listen(port, function() {
         console.log(`Server started on port ${port}`);
