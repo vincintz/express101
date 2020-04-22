@@ -28,7 +28,7 @@
       ```
     * Dev dependency ([NodeMon](https://nodemon.io/))
       ```
-      npm i nodemon -g
+      npm i nodemon -D
       ```
       or
       ```
@@ -36,6 +36,7 @@
       ```
     * There's also global dependecy (later)
       ```
+      npm i nodemon -g
       npm i typescript -g
       ```
 
@@ -53,7 +54,7 @@
       */
       const port = process.env.PORT || 8081;
       app.listen(port, function() {
-        console.log(`Server started on port ${PORT}`);
+        console.log(`Server started on port ${port}`);
       });
       ```
    * Add scripts to package.json
