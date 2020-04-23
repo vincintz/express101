@@ -13,7 +13,7 @@
     ```
     mkdir app101
     cd app101
-    npm init -y 
+    npm init -y
     code .
     ```
 2. Add initial dependencies (express and nodemon)
@@ -41,16 +41,21 @@
       ```
 
 3. Create express web-app
-   * New file `server/app.js`
+    * Create `server/app.js`
       ```
-      const express = require('express')
-      const app = express();
-      const port = process.env.PORT || 8081;
+      var express = require('express');
+      var app = express();
+      var port = process.env.PORT || 8081;
       app.listen(port, function() {
-        console.log(`Server started on port ${port}`);
+        console.log("|Server started on port " + port);
       });
       ```
-   * Add scripts to package.json
+    * Serve sample `server/public/index.html`
+      ```
+      var path = require('path');
+      app.use(express.static(path.join(__dirname, 'public')));
+      ```
+    * Add scripts to `package.json`
       ```
       "scripts": {
         "start": "node server/app",
@@ -59,38 +64,40 @@
       ```
 
 4. Add Sample REST API
+   * Update `server/app.js`
+      ```
+      var userApi = require('./api/users');
+      app.use(express.json());
+      app.use('/rest/v2/users', userApi);
+      ```
     * Create `server/api/users.js`
       ```
-      const express = require('express');
-      const router = express.Router();
-      let users = [ ];
+      var express = require('express');
+      var router = express.Router();
+      var users = [ ];
 
       router.get('/', function (req, res) {
         res.json(users);
       });
       router.post('/', function (req, res) {
-        const user = { id: users.length + 1, name: req.body.name, created: new Date() };
+        var user = { id: users.length + 1, name: req.body.name, created: new Date() };
         users.push(user);
         return res.status(201).json( user );
       });
 
       module.exports = router;
       ```
-   * Update `server/app.js`
-      ```
-      const userApi = require('./api/users')
-      app.use(express.json());
-      app.use('/rest/v2/users', userApi);
-      ```
 
 5. Transpile TypeScript to JavaScript
     * Using global TypeScript Compiler (tsc)
       ```
       npm i typescript -g
-      cp server/app.js server/run.ts
-      tsc server/run.ts
       ```
-    * `tsconfig.json`
+    * Install as dev-dependency
+      ```
+      npm i -D typescript ts-node
+      ```
+    * Create `tsconfig.json`
       ```
       {
         "compilerOptions": {
@@ -106,13 +113,13 @@
         }
       }
       ```
-    * Install TS types
+    * Install types for node and express
       ```
-      npm i @types/node
-      npm i @types/express
+      npm i @types/node @types/express
+      ```
+    * Run tsc server
+      ```
+      cp server/app.js server/run.ts
+      tsc server/run.ts
       ```
     * Update code
-
-# Next steps
-  * Transpilation (babel)
-  * Bundle project into one file (webpack)
