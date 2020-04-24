@@ -1,6 +1,7 @@
 # A TL;DR History of ECMAScript
 
 * **Javascript** - Language created for the Netscape Navigator
+* **JScript** - MS implementation for InternetExplorer
 * **ECMA** (European Computer Manufacturers Association) - standards organization for information and communication systems
 * **ECMAScript** - ECMAScript (or ES) is a scripting-language specification standardized by Ecma International. It was created to standardize JavaScript
 
@@ -12,18 +13,29 @@
 * No standard file system library
 * Too dynamic / not typesafe
 
+
 # NodeJS
 
 * JavaScript runtime environment that executes JavaScript code outside of a web browser
 * Node.js lets developers use JavaScript to write command line tools and for server-side scripting
-* **NPM** - Package manager for the JavaScript programming language
+
+
+# NPM - Node Package Manager
+
+* Package manager for the JavaScript programming language
+* Can be used to package:
+  * server app (Express, NestJS)
+  * webapp (Angular, ReactJS, VueJS)
+  * desktop app (Electron)
+
 
 # ExpressJS
 
 * Express.js is a web application framework for Node.js
 * It is designed for building web applications and APIs
-# Typescript
 
+
+# Typescript
 
 * TypeScript is an open-source programming language developed and maintained by Microsoft
 * It is a strict syntactical superset of JavaScript, and adds optional static typing to the language
