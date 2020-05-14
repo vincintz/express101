@@ -1,0 +1,13 @@
+###
+GET http://localhost:5000/api/messages
+
+###
+POST http://localhost:5000/api/messages
+content-type: application/json
+
+{
+    "message": "This is the second message!"
+}
+
+###
+DELETE http://localhost:5000/api/messages/5e91de32397f5d27a891d5f2
